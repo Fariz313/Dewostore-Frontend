@@ -19,39 +19,58 @@
         <strong>Kategori</strong>
       </div>
       <div class="d-flex justify-content-between padding-navbar pb-3">
-        <button type="button" class="btn btn-light rounded-pill">
-          Semua
-        </button>
-        <button type="button" class="btn btn-light rounded-pill">
-          Atasan
-        </button>
+        <button type="button" class="btn btn-light rounded-pill">Semua</button>
+        <button type="button" class="btn btn-light rounded-pill">Atasan</button>
         <button type="button" class="btn btn-light rounded-pill">
           Bawahan
         </button>
-        <button type="button" class="btn btn-light rounded-pill">
-          Hijab
-        </button>
+        <button type="button" class="btn btn-light rounded-pill">Hijab</button>
         <button type="button" class="btn btn-light rounded-pill">
           Aksesoris
         </button>
-        <button type="button" class="btn btn-light rounded-pill">
-          Dewasa
-        </button>
+        <button type="button" class="btn btn-light rounded-pill">Dewasa</button>
         <button type="button" class="btn btn-light rounded-pill">
           Anak anak
         </button>
       </div>
     </div>
     <div class="row padding-navbar">
-      <div class="col-lg-3 col-md-6 pb-5" v-for="index in 10" :key="index">
+      <div
+        class="col-lg-3 col-md-6 pb-5"
+        v-for="(item, index) in data"
+        :key="index"
+      >
         <div class="card shadow">
-          <img src="/product/product1.png">
-          <h6 class="px-3 pt-3">Atasan Muslim Wanita | Full Dress Brown Cream ...</h6>
-          <h6 class="p-3"><strong>Rp. 70 000</strong> <span class="badge bg-danger text-light">46%</span></h6> 
+          <img :src="item.photo" />
+          <h6 class="px-3 pt-3">
+            {{ item.title }}
+          </h6>
+          <h6 class="p-3">
+            <strong>Rp. {{ item.original_price }}</strong>
+          </h6>
+          <button class="btn btn-danger" @click="bayar">Masukan Ke Keranjang</button>
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      data: [],
+    }
+  },
+  methods: {
+    async fetch() {
+      await this.$axios.get('api/product').then((res) => {
+        this.data = res.data.data
+        console.log(this.data)
+      })
+    },
+  },
+  mounted() {
+    this.fetch()
+  },
+}
+</script>

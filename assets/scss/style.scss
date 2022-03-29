@@ -9,6 +9,10 @@
   padding-left: 250px;
   padding-right: 250px;
 }
+.margin-navbar {
+  margin-left: 250px;
+  margin-right: 250px;
+}
 .absolute-center {
   position: absolute;
   top: 50%;
@@ -17,4 +21,7 @@
 }
 .bright-50 {
   filter: brightness(50%);
+}
+a{
+  text-decoration: none;
 }

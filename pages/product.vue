@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid my-5 px-0 bg-light">
+  <div class="container-fluid my-0 px-0 bg-light">
     <div class="d-flex justify-content-between padding-navbar py-3">
       <strong>Promo Terkini</strong>
       <nuxt-link to="/promo">Promo Lainya</nuxt-link>
